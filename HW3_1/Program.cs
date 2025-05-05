@@ -7,18 +7,11 @@ internal class Program
     static void Main(string[] args)
     {
         Console.WriteLine("How old are you?");
-        int userAge;
-        while (true)
+        var userAge = Convert.ToInt32(Console.ReadLine());
+        while (userAge < 0)
         {
+            Console.WriteLine("You entered your age incorrectly\nTry one more time, please");
             userAge = Convert.ToInt32(Console.ReadLine());
-            if (userAge < 0)
-            {
-                Console.WriteLine("You entered your age incorrectly\nTry one more time, please");
-            }
-            else
-            {
-                break;
-            }
         }
         if (userAge % 2 == 0)
         {

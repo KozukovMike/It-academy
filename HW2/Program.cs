@@ -6,19 +6,12 @@
         {
             Console.WriteLine("what is your name?");
             var userName = Console.ReadLine();
-            int userAge;
-            while (true)
+            Console.WriteLine("How old are you?");
+            var userAge = Convert.ToInt32(Console.ReadLine());
+            while (userAge < 0)
             {
-                Console.WriteLine("How old are you?");
+                Console.WriteLine("You entered your age incorrectly\nTry one more time, please");
                 userAge = Convert.ToInt32(Console.ReadLine());
-                if (userAge < 0)
-                {
-                    Console.WriteLine("You entered your age incorrectly\nTry one more time, please");
-                }
-                else
-                {
-                    break;
-                }
             }
             Console.WriteLine("What is your height?");
             var userHeight = Convert.ToDouble(Console.ReadLine());
