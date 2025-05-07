@@ -11,6 +11,7 @@ internal class Program
             Console.WriteLine("Enter а non-negative number, please");
             arrayLength = Convert.ToInt32(Console.ReadLine());
         }
+
         var array = new object[arrayLength];
 
         for (var i = 0; i < arrayLength; i++)
