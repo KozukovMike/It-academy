@@ -55,9 +55,9 @@ public class Manager : EmployeeBase
 
     public class Project
     {
-        public string ProjectName;
+        public string projectName;
 
-        public DateTime Deadline;
+        public DateTime deadline;
 
         public Project()
         {
@@ -66,13 +66,13 @@ public class Manager : EmployeeBase
 
         public Project(string projectName, DateTime deadline)
         {
-            ProjectName = projectName;
-            Deadline = deadline;
+            this.projectName = projectName;
+            this.deadline = deadline;
         }
 
         public void DisplayProjectInfo()
         {
-            Console.WriteLine($"Project name - {ProjectName}, deadline - {Deadline}");
+            Console.WriteLine($"Project name - {this.projectName}, deadline - {this.deadline}");
         }
     }
 }

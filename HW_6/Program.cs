@@ -19,13 +19,13 @@ internal class Program
         Console.WriteLine("YOUR EMPLOYEES:");
         EmployeeRegistry.FindEmployee("mike");
         var project = new Manager.Project();
-        project.Deadline = DateTime.Now;
-        project.ProjectName = "first project";
+        project.deadline = DateTime.Now;
+        project.projectName = "first project";
         manager1.AssignedProject = project;
         manager1.AssignedProject.DisplayProjectInfo();
         var project1 = new Manager.Project();
-        project1.Deadline = DateTime.Now;
-        project1.ProjectName = "second project";
+        project1.deadline = DateTime.Now;
+        project1.projectName = "second project";
         manager2.AssignedProject = project1;
         manager2.AssignedProject.DisplayProjectInfo();
         while (true)
@@ -47,12 +47,12 @@ internal class Program
                 var userProjectChoise = Console.ReadLine();
                 if (userProjectChoise == "2" || userProjectChoise == "")
                 {
-                    EmployeeRegistry.AddEmployee(AddManager());
+                    EmployeeRegistry.AddEmployee(EmployeeCreator.AddManager());
                 }
                 else if (userProjectChoise == "1")
                 {
-                    var inputManager = AddManager();
-                    var inputProject = AddProject();
+                    var inputManager = EmployeeCreator.AddManager();
+                    var inputProject = EmployeeCreator.AddProject();
                     inputManager.AssignedProject = inputProject;
                     EmployeeRegistry.AddEmployee(inputManager);
                 }
@@ -63,7 +63,7 @@ internal class Program
             }
             else if (userChoise == "1")
             {
-                EmployeeRegistry.AddEmployee(AddWorker());
+                EmployeeRegistry.AddEmployee(EmployeeCreator.AddWorker());
             }
             else
             {
@@ -76,51 +76,5 @@ internal class Program
         EmployeeRegistry.ListAllEmployees();
         Console.WriteLine("YOUR EMPLOYEES:");
         EmployeeRegistry.FindEmployee(employeeName);
-    }
-
-    static Manager AddManager()
-    {
-        Console.WriteLine("Enter the manager's name");
-        var name = Console.ReadLine();
-        Console.WriteLine("Enter the manager's position");
-        var position = Console.ReadLine();
-        Console.WriteLine("Enter the manager's education");
-        var education = Console.ReadLine();
-        Console.WriteLine("Enter the manager's salary");
-        var inputSalary = Console.ReadLine();
-        var salary = 0;
-        if (!string.IsNullOrEmpty(inputSalary))
-        {
-            salary = int.Parse(inputSalary);
-        }
-        return new Manager(salary, education, name, position);
-    }
-
-    static Worker AddWorker()
-    {
-        Console.WriteLine("Enter the worker's name");
-        var name = Console.ReadLine();
-        Console.WriteLine("Enter the worker's position");
-        var position = Console.ReadLine();
-        Console.WriteLine("Enter the work area");
-        var workArea = Console.ReadLine();
-        Console.WriteLine("Enter the worker's salary");
-        var inputSalary = Console.ReadLine();
-        var salary = 0;
-        if (!string.IsNullOrEmpty(inputSalary))
-        {
-            salary = int.Parse(inputSalary);
-        }
-        return new Worker(salary, workArea, name, position);
-    }
-
-    static Manager.Project AddProject()
-    {
-        Console.WriteLine("Enter the project's deadline as year-month-day");
-        var inputDeadline = Console.ReadLine();
-        DateTime deadline = DateTime.ParseExact(inputDeadline, "yyyy-MM-dd", CultureInfo.InvariantCulture);
-        Console.WriteLine("Enter the project's name");
-        var projectName = Console.ReadLine();
-        return new Manager.Project(projectName, deadline);
     }
 }
